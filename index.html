@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Are My Peace, My Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="container">
+        <header>
+            <h1>You Are My Peace, My Home</h1>
+            <div class="subtitle">
+                A message from someone who misses you more than words can express
+                <i class="fas fa-heart heart-icon"></i>
+            </div>
+        </header>
+        
+        <section class="message-section">
+            <h2>My Dearest Friend,</h2>
+            <div class="message-text">
+                <p>I've been thinking about you so much lately. There's an emptiness that only your presence can fill. You are, and always have been, <span class="highlight">my peace</span> and <span class="highlight">my home</span> - the calm in my storm, the comfort in my chaos.</p>
+                
+                <p>Life feels different without our daily conversations, our shared laughter, and those moments of comfortable silence that only true friends can share. I miss the way we could talk about everything and nothing at all, how you always knew exactly what to say to make me feel better, and how your mere presence made everything seem right.</p>
+                
+                <p>I want you to know that even though we're apart right now, you're in my thoughts every single day. The memories we've created together are treasures I hold close to my heart, and they bring me comfort when I miss you the most.</p>
+            </div>
+        </section>
+        
+        <div class="photo-section">
+            <div class="photo-placeholder">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="photo-placeholder">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="photo-placeholder">
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        
+        <section class="care-section">
+            <h2>Please Take Care of Yourself</h2>
+            <p class="message-text">While I'm missing you, what matters most is that you're taking good care of yourself. Remember to:</p>
+            
+            <ul class="care-list">
+                <li><i class="fas fa-check-circle"></i> Get enough rest and sleep well every night</li>
+                <li><i class="fas fa-check-circle"></i> Eat nourishing meals that fuel your body and soul</li>
+                <li><i class="fas fa-check-circle"></i> Take breaks when you need them - it's okay to pause</li>
+                <li><i class="fas fa-check-circle"></i> Surround yourself with positive energy and people</li>
+                <li><i class="fas fa-check-circle"></i> Remember how incredible you are and how much you're loved</li>
+                <li><i class="fas fa-check-circle"></i> Do something that brings you joy every single day</li>
+            </ul>
+            
+            <p class="message-text">Your wellbeing means everything to me. When you take care of yourself, you're honoring the amazing person you are.</p>
+        </section>
+        
+        <div class="memory-box">
+            <h3>A Sweet Memory</h3>
+            <p class="message-text">I was thinking about that time we stayed up all night talking about our dreams and fears. You made me feel so understood and safe. That's when I realized you're not just my friend - you're my sanctuary. No matter where life takes us, that connection remains, and I carry that sense of peace you give me wherever I go.</p>
+        </div>
+        
+        <button class="interactive-btn" id="messageBtn">
+            <i class="fas fa-envelope"></i> Click for a Special Message
+        </button>
+        
+        <div class="hidden-message" id="specialMessage">
+            <h3>You are irreplaceable.</h3>
+            <p>No matter the distance or time that passes, please remember that you have a friend who cherishes you deeply and is always here for you. I can't wait until we can share our peace and home again.</p>
+            <p>Until then, be gentle with yourself. You deserve all the love and care in the world.</p>
+        </div>
+        
+        <footer>
+            <p>This website was created with heartfelt emotions</p>
+            <p>To express what words alone cannot convey</p>
+            <div class="signature">Stay Bless</div>
+        </footer>
+    </div>
+
+    <script>
+        // Create floating hearts
+        const floatingHeartsContainer = document.getElementById('floatingHearts');
+        const heartIcons = ['❤️', '💖', '💗', '💓', '💞'];
+        
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            
+            // Random position and animation
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 10 + 8) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            
+            floatingHeartsContainer.appendChild(heart);
+        }
+        
+        // Interactive button functionality
+        document.getElementById('messageBtn').addEventListener('click', function() {
+            const message = document.getElementById('specialMessage');
+            if (message.style.display === 'block') {
+                message.style.display = 'none';
+                this.innerHTML = '<i class="fas fa-envelope"></i> Click for a Special Message';
+            } else {
+                message.style.display = 'block';
+                this.innerHTML = '<i class="fas fa-times"></i> Hide Message';
+                
+                // Create a burst of hearts when the message is shown
+                createHeartBurst();
+            }
+        });
+        
+        function createHeartBurst() {
+            const container = document.querySelector('.container');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'absolute';
+                heart.style.fontSize = '20px';
+                heart.style.color = '#ff6b6b';
+                heart.style.zIndex = '1000';
+                heart.style.left = '50%';
+                heart.style.top = '80%';
+                heart.style.opacity = '1';
+                
+                // Random animation
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 2 + Math.random() * 3;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                container.appendChild(heart);
+                
+                let x = 50;
+                let y = 80;
+                let opacity = 1;
+                
+                const animateHeart = setInterval(() => {
+                    x += vx;
+                    y += vy;
+                    opacity -= 0.02;
+                    
+                    heart.style.left = x + '%';
+                    heart.style.top = y + '%';
+                    heart.style.opacity = opacity;
+                    
+                    if (opacity <= 0) {
+                        clearInterval(animateHeart);
+                        heart.remove();
+                    }
+                }, 30);
+            }
+        }
+        
+        // Add a subtle background animation
+        document.body.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.body.style.background = `linear-gradient(${x * 45 + 135}deg, #f9f7fe ${y * 30}%, #fff5f5 100%)`;
+        });
+    </script>
+</body>
+</html>
